@@ -1,0 +1,111 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+	<meta charset="UTF-8" />
+	<title>Phaser - BeeApple</title>
+    <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+var game = new Phaser.Game(600, 600, Phaser.CANVAS, '', { preload: preload, create: create, update: update, render: render });
+
+function preload() {
+
+	game.load.image('bee','images/bee.png');
+	game.load.image('bearface','images/bearface.png');
+	game.load.image('bearback','images/bearback.png');
+	game.load.image('bearface2','images/bearface2.png');
+	game.load.image('bearback2','images/bearback2.png');
+	game.load.image('apple','images/apple.png');
+	game.load.image('background','images/background.jpg');
+
+}
+var bears=[];
+var bee;
+var apples;
+var cursors;
+var scoreText;
+var score=0;
+
+function create() {
+
+	game.physics.startSystem(Phaser.Physics.ARCADE);
+	game.add.sprite(0,0,'background');
+	bears.push(game.add.sprite(10,10,'bearface'));
+	bears.push(game.add.sprite(game.world.width-130,10,'bearface2'));
+	bee=game.add.sprite(300,300,'bee');
+	game.physics.arcade.enable(bee);
+	bee.body.setSize(57,45,10,20);
+	bee.body.collideWorldBounds = true;
+	apples = game.add.group();
+	bears.push(game.add.sprite(10,game.world.height-140,'bearback'));
+	bears.push(game.add.sprite(game.world.width-130,game.world.height-140,'bearback2'));
+	for(var i=0;i<4;i++){
+		bears[i].width=120;
+		bears[i].height=130;
+	}
+	apples.enableBody=true;
+	cursors = game.input.keyboard.createCursorKeys();
+
+	scoreText = game.add.text(250,16,'Очки: 0',{fontSize:'32px',fill:'#AFEEEE'});
+
+}
+
+function update() {
+	if(!game.physics.arcade.isPaused){
+		game.physics.arcade.overlap(bee, apples, gameOver, null, this);
+
+		bee.body.velocity.set(0,0)
+		if(cursors.left.isDown){
+			bee.body.velocity.x=-150;
+		}else if(cursors.right.isDown){
+			bee.body.velocity.x=150;
+		}
+		if(cursors.up.isDown){
+			bee.body.velocity.y=-150;
+		}else if(cursors.down.isDown){
+			bee.body.velocity.y=150;
+		}
+		if(Math.random()<0.03){
+			bearThrow(Math.round(Math.random()*3));
+			score++;
+			scoreText.text = 'Очки: '+score;
+		}
+	}
+	
+}
+
+function bearThrow(i){
+	var apple =apples.create(bears[i].x+60,bears[i].y+55,'apple');
+	apple.width=40;
+	apple.height=40;
+	apple.body.velocity.y=100*Math.sin(3.14/2-Math.atan2(bee.x+bee.width/2-bears[i].x-80,bee.y+bee.height/2-bears[i].y-75));
+	apple.body.velocity.x=100*Math.cos(3.14/2-Math.atan2(bee.x+bee.width/2-bears[i].x-80,bee.y+bee.height/2-bears[i].y-75));
+	apple.body.setSize(40,40,5,5)
+}
+
+function gameOver(bee,apple){
+	game.physics.arcade.isPaused=true;
+	scoreText.text = 'Очки: '+score+' Игра окончена';
+}
+
+function render(){
+	//game.debug.body(bee);
+	//apples.forEachAlive(renderGroup, this);
+}
+
+function renderGroup(member){
+	game.debug.body(member);
+}
+
+</script>
+
+</body>
+</html>
