@@ -93,9 +93,9 @@ function bearThrow(i){
 }
 
 function gameOver(bee,apple){
+	bee.body.kill();
 	game.physics.arcade.isPaused=true;
 	scoreText.text = 'Очки: '+score+' Игра окончена';
-	bee.kill();
 }
 
 function render(){
