@@ -33,6 +33,7 @@ var apples;
 var cursors;
 var scoreText;
 var score=0;
+var beeSpeed=200;
 
 function create() {
 
@@ -64,14 +65,14 @@ function update() {
 
 		bee.body.velocity.set(0,0)
 		if(cursors.left.isDown){
-			bee.body.velocity.x=-150;
+			bee.body.velocity.x=-beeSpeed;
 		}else if(cursors.right.isDown){
-			bee.body.velocity.x=150;
+			bee.body.velocity.x=beeSpeed;
 		}
 		if(cursors.up.isDown){
-			bee.body.velocity.y=-150;
+			bee.body.velocity.y=-beeSpeed;
 		}else if(cursors.down.isDown){
-			bee.body.velocity.y=150;
+			bee.body.velocity.y=beeSpeed;
 		}
 		if(Math.random()<0.03){
 			bearThrow(Math.round(Math.random()*3));
@@ -94,6 +95,7 @@ function bearThrow(i){
 function gameOver(bee,apple){
 	game.physics.arcade.isPaused=true;
 	scoreText.text = 'Очки: '+score+' Игра окончена';
+	bee.kill();
 }
 
 function render(){
