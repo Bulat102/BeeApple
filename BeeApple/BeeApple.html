@@ -4,6 +4,7 @@
 	<meta charset="UTF-8" />
 	<title>Phaser - BeeApple</title>
     <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
+	<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
     <style type="text/css">
         body {
             margin: 0;
@@ -13,7 +14,16 @@
 <body>
 
 <script type="text/javascript">
-
+ VK.init(function() { 
+     // API initialization succeeded 
+     // Your code here 
+  }, function() { 
+     // API initialization failed 
+     // Can reload page here 
+}, '5.76'); 
+VK.api("wall.post", {"message": "Hello!"}, function (data) {
+alert("Post ID:" + data.response.post_id);
+});
 var game = new Phaser.Game(600, 600, Phaser.CANVAS, '', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
