@@ -8,8 +8,7 @@ var Finish ={
 		game.input.onDown.add(this.wallPost,this);	},
 	update: function(){},
 	wallPost: function(){
-		VK.api("storage.set",{"key": "score1", "value": "234", "global": "1"});
-		//VK.api("wall.post", {"message": String("В игре Udareniya я верно расставил ударения на "+score+this.whatSl("слово")+"  Ссылка: vk.com/app6393619"), "attachments": "photo-160039023_456239018"});
+		VK.api("wall.post", {"message": String("В игре Udareniya я верно расставил ударения на "+score+this.whatSl("слово")+"  Ссылка: vk.com/app6393619"), "attachments": "photo-160039023_456239018"});
 	},
 	whatSl: function(sl){
 		var ret=sl;
