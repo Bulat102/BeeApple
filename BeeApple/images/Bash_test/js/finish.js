@@ -1,4 +1,9 @@
 var scoresText;
+var scores=[];
+var names=[];
+var n=-1;
+var name;
+var code;
 var Finish ={
 	preload : function(){},
 	create: function(){
@@ -7,9 +12,15 @@ var Finish ={
 			"За 15 секунд вы верно ответили\n на "+score+this.whatSl("вопрос")+"\n Кликните, чтобы поделиться",
 			{font:"bold 23px Arial",fill:'#000000', align:'center'});
 		instruction.anchor.set(0.5,0.5);	
-		scoresText = game.add.text(5,5,"",{font:"italic 20px Arial",fill:'#1c3956', align:'left'});
-		this.setScores();
+		scoresText = game.add.text(5,5,"",{font:"italic 20px Arial",fill:'#1c3956'})
 		game.input.onDown.add(this.wallPost,this);
+		code=String('return{"name":API.account.getProfileInfo(),"scores":API.storage.get({"keys":"top1,top2,top3,name1,name2,name3", "global":1})};');
+		Vk.api("execute",{"code":code},function(data){
+			name=String(data.name.last_name+" "+data.name.first_name);
+			scores=[data.scores[0].value,data.scores[1].value,data.scores[2].value];
+			names=[data.scores[3].value,data.scores[4].value,data.scores[5].value];
+		});
+		this.setScores();
 	},
 	update: function(){},
 	wallPost: function(){
@@ -33,13 +44,6 @@ var Finish ={
 		return String(' '+ret);
 	},
 	setScores: function(){
-		var scores=[];
-		var names=[];
-		var n=-1;
-		var name;
-		VK.api("account.getProfileInfo", {},function(data){name=String(data.last_name+" "+data.first_name);});
-		VK.api("storage.get", {"keys":"top1,top2,top3","global":1},function(data){scores=[data[0].value,data[1].value,data[2].value];});
-		VK.api("storage.get", {"key":"name1,name2,name3","global":1},function(data){names=[data[0].value,data[1].value,data[2].value];});
 		for(var i=0;i<score.length;i++){
 			if(Number(scores[i])<=score){
 				n=i;
@@ -49,12 +53,8 @@ var Finish ={
 			names.splice(n,0,name);
 			scores.splice(n,0,score);
 			scoresText.text="Рекорды:\n1. "+names[0]+" "+scores[0]+"\n2. "+names[1]+" "+scores[1]+"\n3. "+names[2]+" "+scores[2];
-			VK.api("storage.set", {"key":"top1","value": String(scores[0]),"global":1});
-			VK.api("storage.set", {"key":"top2","value": String(scores[1]),"global":1});
-			VK.api("storage.set", {"key":"top3","value": String(scores[2]),"global":1});
-			VK.api("storage.set", {"key":"name1","value": String(names[0]),"global":1});
-			VK.api("storage.set", {"key":"name2","value": String(names[1]),"global":1});
-			VK.api("storage.set", {"key":"name3","value": String(names[2]),"global":1});
+			var code =String('return[API.storage.set({"key":"top1","value": '+scores[0]+',"global":1}),API.storage.set({"key":"top2","value": '+scores[1]+',"global":1}),API.storage.set({"key":"top3","value":'+scores[2]+',"global":1}),API.storage.set({"key":"name1","value":'+names[0]+',"global":1}),API.storage.set({"key":"name2","value":'+names[1]+',"global":1}),API.storage.set({"key":"name3","value": '+names[2]+',"global":1})];');
+			Vk.api("execute",{"code":code});
 		}else{
 			scoresText.text="Рекорды:\n1. "+names[0]+" "+scores[0]+"\n2. "+names[1]+" "+scores[1]+"\n3. "+names[2]+" "+scores[2];
 			scoresText.text=scores.text+"\n Результат "+score+"не попал в топ(";
