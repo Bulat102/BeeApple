@@ -10,8 +10,8 @@ var Finish ={
 
 		instruction = game.add.text(game.world.width/2,game.world.height/2,
 			"За 15 секунд вы верно ответили\n на "+score+this.whatSl("вопрос")+"\n Кликните, чтобы поделиться",
-			{font:"bold 24px Arial",fill:'#000000', align:'center'});
-		instruction.anchor.set(0.5,0.5);	
+			{font:"bold 18px Arial",fill:'#000000', align:'center'});
+		instruction.anchor.set(0,0);	
 		scoresText = game.add.text(5,5,"",{font:"italic 20px Arial",fill:'#1c3956'})
 		game.input.onDown.add(this.wallPost,this);
 		var scor=this.setScores;
