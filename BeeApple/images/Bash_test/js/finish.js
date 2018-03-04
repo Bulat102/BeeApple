@@ -14,30 +14,17 @@ var Finish ={
 		instruction.anchor.set(0.5,0.5);	
 		scoresText = game.add.text(5,5,"",{font:"italic 20px Arial",fill:'#1c3956'})
 		game.input.onDown.add(this.wallPost,this);
-		code=String('return{"name":API.account.getProfileInfo(),"scores":API.storage.get({"keys":"top1,top2,top3,name1,name2,name3", "global":1})};');
+		code=String('return{"name":API.users.get(),"scores":API.storage.get({"keys":"top1,top2,top3,name1,name2,name3", "global":1})};');
 		VK.api("execute",{"code":code},function(data){
-			instruction.text=data.toString+'1\n';
-			instruction.text=instruction.text+data.response.name.last_name+'1\n';
-			instruction.text=instruction.text+data.last_name+'1\n';
-			//name=String(data.response.name.last_name+" "+data.response.name.first_name);
-			//scores=[data.response.scores[0].value,data.response.scores[1].value,data.response.scores[2].value];
-			//names=[data.response.scores[3].value,data.response.scores[4].value,data.response.scores[5].value];
+			name=String(data.response.name.last_name+" "+data.response.name.first_name);
+			scores=[data.response.scores[0].value,data.response.scores[1].value,data.response.scores[2].value];
+			names=[data.response.scores[3].value,data.response.scores[4].value,data.response.scores[5].value];
 		});
 		this.setScores();
 	},
 	update: function(){},
 	wallPost: function(){
-		code=String('return{"name":API.account.getProfileInfo(),"scores":API.storage.get({"keys":"top1,top2,top3,name1,name2,name3", "global":1})};');
-		VK.api("execute",{"code":code},function(data){
-			VK.api('account.getProfileInfo',{},function(dat){instruction.text=JSON.stringify(dat,'',2)+'1\n';});
-			instruction.text=JSON.stringify(data,'',2)+'1\n';
-			//instruction.text=instruction.text+data.response.name.last_name+'1\n';
-			//instruction.text=instruction.text+data.last_name+'1\n';
-			//name=String(data.response.name.last_name+" "+data.response.name.first_name);
-			//scores=[data.response.scores[0].value,data.response.scores[1].value,data.response.scores[2].value];
-			//names=[data.response.scores[3].value,data.response.scores[4].value,data.response.scores[5].value];
-		});
-		//VK.api("wall.post", {"message": String("В игре Udareniya я верно расставил ударения на "+score+this.whatSl("слово")+"  Ссылка: vk.com/app6393619"), "attachments": "photo-160039023_456239018"});
+		VK.api("wall.post", {"message": String("В игре Udareniya я верно расставил ударения на "+score+this.whatSl("слово")+"  Ссылка: vk.com/app6393619"), "attachments": "photo-160039023_456239018"});
 	},
 	whatSl: function(sl){
 		var ret=sl;
@@ -65,12 +52,12 @@ var Finish ={
 		if(n>-1){
 			names.splice(n,0,name);
 			scores.splice(n,0,score);
-			//scoresText.text="Рекорды:\n1. "+names[0]+" "+scores[0]+"\n2. "+names[1]+" "+scores[1]+"\n3. "+names[2]+" "+scores[2];
+			scoresText.text="Рекорды:\n1. "+names[0]+" "+scores[0]+"\n2. "+names[1]+" "+scores[1]+"\n3. "+names[2]+" "+scores[2];
 			var code =String('return[API.storage.set({"key":"top1","value": '+scores[0]+',"global":1}),API.storage.set({"key":"top2","value": '+scores[1]+',"global":1}),API.storage.set({"key":"top3","value":'+scores[2]+',"global":1}),API.storage.set({"key":"name1","value":'+names[0]+',"global":1}),API.storage.set({"key":"name2","value":'+names[1]+',"global":1}),API.storage.set({"key":"name3","value": '+names[2]+',"global":1})];');
 			VK.api("execute",{"code":code});
 		}else{
-			//scoresText.text="Рекорды:\n1. "+names[0]+" "+scores[0]+"\n2. "+names[1]+" "+scores[1]+"\n3. "+names[2]+" "+scores[2];
-			//scoresText.text=scores.text+"\n Результат "+score+"не попал в топ(";
+			scoresText.text="Рекорды:\n1. "+names[0]+" "+scores[0]+"\n2. "+names[1]+" "+scores[1]+"\n3. "+names[2]+" "+scores[2];
+			scoresText.text=scores.text+"\n Результат "+score+"не попал в топ(";
 		}
 	} 
 }
