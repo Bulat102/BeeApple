@@ -45,7 +45,7 @@ var Finish ={
 		return String(' '+ret);
 	},
 	setScores: function(){
-		for(var i=0;i<scores.length;i++){
+		for(var i=scores.length-1;i>=0;i--){
 			if(Number(scores[i])<=score){
 				n=i;
 			}
