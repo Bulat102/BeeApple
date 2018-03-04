@@ -19,6 +19,7 @@ var Finish ={
 			name=String(data.response.name.last_name+" "+data.response.name.first_name);
 			scores=[data.response.scores[0].value,data.response.scores[1].value,data.response.scores[2].value];
 			names=[data.response.scores[3].value,data.response.scores[4].value,data.response.scores[5].value];
+			instruction.text=scores;
 		});
 		this.setScores();
 	},
