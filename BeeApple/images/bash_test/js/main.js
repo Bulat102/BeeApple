@@ -1,5 +1,5 @@
 var game;
-VK.init(function(data) {VK.callMethod("setTitle",data.api_settings);}, function() {}, '5.73');
+VK.init(function() {}, function() {}, '5.73');
 window.onload=function(){
 	game = new Phaser.Game(800,600,Phaser.AUTO,'Bash_test');
 	game.state.add("Menu",Menu);
