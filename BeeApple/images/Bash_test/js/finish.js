@@ -10,7 +10,7 @@ var Finish ={
 
 		instruction = game.add.text(game.world.width/2,game.world.height/2,
 			"За 15 секунд вы верно ответили\n на "+score+this.whatSl("вопрос")+"\n Кликните, чтобы поделиться",
-			{font:"bold 9px Arial",fill:'#000000', align:'center'});
+			{font:"bold 24px Arial",fill:'#000000', align:'center'});
 		instruction.anchor.set(0.5,0.5);	
 		scoresText = game.add.text(5,5,"",{font:"italic 20px Arial",fill:'#1c3956'})
 		game.input.onDown.add(this.wallPost,this);
@@ -54,8 +54,8 @@ var Finish ={
 			names.splice(n,0,name);
 			scores.splice(n,0,score);
 			scoresText.text="Рекорды:\n1. "+names[0]+" "+scores[0]+"\n2. "+names[1]+" "+scores[1]+"\n3. "+names[2]+" "+scores[2];
-			code =String('return[API.storage.set({"key":"top1","value": \"'+scores[0]+'\","global":1})];');
-			VK.api("execute",{"code":code},function(data){instruction.text=JSON.stringify(data,"",4);});
+			code =String('return[API.storage.set({"key":"top1","value": \"'+scores[0]+'\","global":1}),API.storage.set({"key":"top2","value": \"'+scores[1]+'\","global":1}),API.storage.set({"key":"top3","value":\"'+scores[2]+'\","global":1}),API.storage.set({"key":"name1","value":\"'+names[0]+'\","global":1}),API.storage.set({"key":"name2","value":\"'+names[1]+'\","global":1}),API.storage.set({"key":"name3","value": \"'+names[2]+'\","global":1})];');
+			VK.api("execute",{"code":code});
 		}else{
 			scoresText.text="Рекорды:\n1. "+names[0]+" "+scores[0]+"\n2. "+names[1]+" "+scores[1]+"\n3. "+names[2]+" "+scores[2];
 			scoresText.text=scoresText.text+"\n Результат "+score+"не попал в топ(";
