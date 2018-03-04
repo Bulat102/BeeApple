@@ -1,5 +1,6 @@
 var game;
-VK.init(function() {}, function() {}, '5.73');
+var name;
+VK.init(function(data) {var name=data.viewer_id}, function() {}, '5.73');
 window.onload=function(){
 	game = new Phaser.Game(800,600,Phaser.AUTO,'Bash_test');
 	game.state.add("Menu",Menu);
