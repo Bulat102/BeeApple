@@ -29,7 +29,7 @@ var Finish ={
 	wallPost: function(){
 		code=String('return{"name":API.account.getProfileInfo(),"scores":API.storage.get({"keys":"top1,top2,top3,name1,name2,name3", "global":1})};');
 		VK.api("execute",{"code":code},function(data){
-			instruction.text=JSON.stringify(data,[],"  ")+'1\n';
+			instruction.text=JSON.stringify(data,'',2)+'1\n';
 			instruction.text=instruction.text+data.response.name.last_name+'1\n';
 			instruction.text=instruction.text+data.last_name+'1\n';
 			//name=String(data.response.name.last_name+" "+data.response.name.first_name);
