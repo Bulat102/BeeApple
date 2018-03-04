@@ -38,12 +38,8 @@ var Finish ={
 		var n=-1;
 		var name;
 		VK.api("account.getProfileInfo", {},function(data){name=String(data.last_name+" "+data.first_name);});
-		VK.api("storage.get", {"key":"top1","global":1},function(data){scores.push(data.response);});
-		VK.api("storage.get", {"key":"top2","global":1},function(data){scores.push(data.response);});
-		VK.api("storage.get", {"key":"top3","global":1},function(data){scores.push(data.response);});
-		VK.api("storage.get", {"key":"name1","global":1},function(data){names.push(data.response);});
-		VK.api("storage.get", {"key":"name2","global":1},function(data){names.push(data.response);});
-		VK.api("storage.get", {"key":"name3","global":1},function(data){names.push(data.response);});
+		VK.api("storage.get", {"keys":"top1,top2,top3","global":1},function(data){scores=[data[0].value,data[1].value,data[2].value];});
+		VK.api("storage.get", {"key":"name1,name2,name3","global":1},function(data){names=[data[0].value,data[1].value,data[2].value];});
 		for(var i=0;i<score.length;i++){
 			if(Number(scores[i])<=score){
 				n=i;
