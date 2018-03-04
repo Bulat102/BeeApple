@@ -8,6 +8,7 @@ var Menu={
 			"Выберите верный ответ,\n кликнув на него.\n Кликните, чтобы начать",
 			{font:"bold 23px Arial",fill:'#000000', align:'center'});
 		instruction.anchor.set(0.5,0.5);	
+		instruction.text=name;
 		game.input.onDown.add(this.startGame,this);	
 	},
 	startGame: function(){
