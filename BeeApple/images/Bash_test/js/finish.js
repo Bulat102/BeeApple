@@ -53,6 +53,12 @@ var Finish ={
 			names.splice(n,0,name);
 			scores.splice(n,0,score);
 			scores.text="Рекорды:\n1. "+names[0]+" "+scores[0]+"\n2. "+names[1]+" "+scores[1]+"\n3. "+names[2]+" "+scores[2];
+			VK.api("storage.set", {"key":"top1","value": String(scores[0]),"global":1});
+			VK.api("storage.set", {"key":"top2","value": String(scores[1]),"global":1});
+			VK.api("storage.set", {"key":"top3","value": String(scores[2]),"global":1});
+			VK.api("storage.set", {"key":"name1","value": String(names[0]),"global":1});
+			VK.api("storage.set", {"key":"name2","value": String(names[1]),"global":1});
+			VK.api("storage.set", {"key":"name3","value": String(names[2]),"global":1});
 		}else{
 			scores.text="Рекорды:\n1. "+names[0]+" "+scores[0]+"\n2. "+names[1]+" "+scores[1]+"\n3. "+names[2]+" "+scores[2];
 			scores.text=scores.text+"\n Результат "+score+"не попал в топ(";
