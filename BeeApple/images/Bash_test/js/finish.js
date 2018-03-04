@@ -57,7 +57,7 @@ var Finish ={
 			VK.api("execute",{"code":code});
 		}else{
 			scoresText.text="Рекорды:\n1. "+names[0]+" "+scores[0]+"\n2. "+names[1]+" "+scores[1]+"\n3. "+names[2]+" "+scores[2];
-			scoresText.text=scores.text+"\n Результат "+score+"не попал в топ(";
+			scoresText.text=scoresText.text+"\n Результат "+score+"не попал в топ(";
 		}
 	} 
 }
