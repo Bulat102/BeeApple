@@ -45,7 +45,6 @@ var Finish ={
 		return String(' '+ret);
 	},
 	setScores: function(){
-		instruction.text=names;
 		for(var i=0;i<scores.length;i++){
 			if(Number(scores[i])<=score){
 				n=i;
@@ -55,7 +54,7 @@ var Finish ={
 			names.splice(n,0,name);
 			scores.splice(n,0,score);
 			scoresText.text="Рекорды:\n1. "+names[0]+" "+scores[0]+"\n2. "+names[1]+" "+scores[1]+"\n3. "+names[2]+" "+scores[2];
-			var code =String('return[API.storage.set({"key":"top1","value": '+scores[0]+',"global":1}),API.storage.set({"key":"top2","value": '+scores[1]+',"global":1}),API.storage.set({"key":"top3","value":'+scores[2]+',"global":1}),API.storage.set({"key":"name1","value":'+names[0]+',"global":1}),API.storage.set({"key":"name2","value":'+names[1]+',"global":1}),API.storage.set({"key":"name3","value": '+names[2]+',"global":1})];');
+			code =String('return[API.storage.set({"key":"top1","value": '+scores[0]+',"global":1}),API.storage.set({"key":"top2","value": '+scores[1]+',"global":1}),API.storage.set({"key":"top3","value":'+scores[2]+',"global":1}),API.storage.set({"key":"name1","value":'+names[0]+',"global":1}),API.storage.set({"key":"name2","value":'+names[1]+',"global":1}),API.storage.set({"key":"name3","value": '+names[2]+',"global":1})];');
 			VK.api("execute",{"code":code});
 		}else{
 			scoresText.text="Рекорды:\n1. "+names[0]+" "+scores[0]+"\n2. "+names[1]+" "+scores[1]+"\n3. "+names[2]+" "+scores[2];
