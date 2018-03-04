@@ -44,6 +44,7 @@ var Finish ={
 		return String(' '+ret);
 	},
 	setScores: function(){
+		istruction.text=names;
 		for(var i=0;i<scores.length;i++){
 			if(Number(scores[i])<=score){
 				n=i;
