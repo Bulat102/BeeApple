@@ -11,7 +11,7 @@ var Menu={
 		game.input.onDown.add(this.startGame,this);	
 	},
 	startGame: function(){
-		VK.api("storage.get",{"key": "score3", "global": "1"},function(data){instruction.text=data.response});
+		VK.api("storage.set",{"key": "scores4","value":"score4value", "global": 1},function(data){instruction.text=data.response});
 		//instruction.destroy();
 		//game.state.start("Game");
 	},
