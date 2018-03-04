@@ -16,9 +16,10 @@ var Finish ={
 		game.input.onDown.add(this.wallPost,this);
 		code=String('return{"name":API.account.getProfileInfo(),"scores":API.storage.get({"keys":"top1,top2,top3,name1,name2,name3", "global":1})};');
 		VK.api("execute",{"code":code},function(data){
-			name=String(data.response.name.last_name+" "+data.response.name.first_name);
-			scores=[data.response.scores[0].value,data.response.scores[1].value,data.response.scores[2].value];
-			names=[data.response.scores[3].value,data.response.scores[4].value,data.response.scores[5].value];
+			scoresText.text=data;
+			//name=String(data.response.name.last_name+" "+data.response.name.first_name);
+			//scores=[data.response.scores[0].value,data.response.scores[1].value,data.response.scores[2].value];
+			//names=[data.response.scores[3].value,data.response.scores[4].value,data.response.scores[5].value];
 		});
 		this.setScores();
 	},
@@ -52,12 +53,12 @@ var Finish ={
 		if(n>-1){
 			names.splice(n,0,name);
 			scores.splice(n,0,score);
-			scoresText.text="Рекорды:\n1. "+names[0]+" "+scores[0]+"\n2. "+names[1]+" "+scores[1]+"\n3. "+names[2]+" "+scores[2];
+			//scoresText.text="Рекорды:\n1. "+names[0]+" "+scores[0]+"\n2. "+names[1]+" "+scores[1]+"\n3. "+names[2]+" "+scores[2];
 			var code =String('return[API.storage.set({"key":"top1","value": '+scores[0]+',"global":1}),API.storage.set({"key":"top2","value": '+scores[1]+',"global":1}),API.storage.set({"key":"top3","value":'+scores[2]+',"global":1}),API.storage.set({"key":"name1","value":'+names[0]+',"global":1}),API.storage.set({"key":"name2","value":'+names[1]+',"global":1}),API.storage.set({"key":"name3","value": '+names[2]+',"global":1})];');
 			VK.api("execute",{"code":code});
 		}else{
-			scoresText.text="Рекорды:\n1. "+names[0]+" "+scores[0]+"\n2. "+names[1]+" "+scores[1]+"\n3. "+names[2]+" "+scores[2];
-			scoresText.text=scores.text+"\n Результат "+score+"не попал в топ(";
+			//scoresText.text="Рекорды:\n1. "+names[0]+" "+scores[0]+"\n2. "+names[1]+" "+scores[1]+"\n3. "+names[2]+" "+scores[2];
+			//scoresText.text=scores.text+"\n Результат "+score+"не попал в топ(";
 		}
 	} 
 }
