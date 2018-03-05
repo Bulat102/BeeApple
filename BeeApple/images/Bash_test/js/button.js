@@ -26,6 +26,7 @@ class Button extends Phaser.Group{
 					score++;
 				}else{
 					this.s.frame=1;
+					score--;
 				}
 				right='';
 				Game.startTimer();
