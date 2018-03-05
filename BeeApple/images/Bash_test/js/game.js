@@ -1,5 +1,6 @@
 var button1;
 var button2;
+var buty;
 var eventDispatcher;
 var words;
 var right;
@@ -11,7 +12,7 @@ var scoreText;
 var graphics;
 var Game ={
 	preload : function(){
-		game.load.spritesheet('button','images/button.png',220,76);
+		game.load.spritesheet('button','images/button2.png',236,89);
 	},
 	create: function(){
 		graphics = game.add.graphics(0,0);
@@ -27,6 +28,7 @@ var Game ={
 		scoreText.setShadow(7,10,'rgba(0,0,0,0.5)',10);
 		button1=new Button(game.world.width/2-236/2-30,game.world.height/2);
 		button2=new Button(game.world.width/2+236/2+30,game.world.height/2);
+		buty=game.world.height/2;
 		this.makeQuestion();
 		this.makeTimer();
 		timer=game.time.events.loop(Phaser.Timer.SECOND,this.secondCount,this);
@@ -35,6 +37,7 @@ var Game ={
 	makeQuestion: function(){
 		button1.s.frame=0;
 		button2.s.frame=0;
+		button1.y=buty;
 		var num=game.rnd.integerInRange(0,words.length/2-1);
 		if(game.rnd.integerInRange(0,1)){
 			button1.setName(words[num*2]);

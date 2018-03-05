@@ -21,6 +21,7 @@ class Button extends Phaser.Group{
 	gotEvent(call,params){
 		if(call=="press"){
 			if(params==this && right){
+				this.y+=3;
 				if(this.textF.text==right){
 					this.s.frame=2;
 					score++;
