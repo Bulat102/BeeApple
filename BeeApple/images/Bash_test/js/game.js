@@ -38,6 +38,7 @@ var Game ={
 		button1.s.frame=0;
 		button2.s.frame=0;
 		button1.y=buty;
+		button2.y=buty;
 		var num=game.rnd.integerInRange(0,words.length/2-1);
 		if(game.rnd.integerInRange(0,1)){
 			button1.setName(words[num*2]);
