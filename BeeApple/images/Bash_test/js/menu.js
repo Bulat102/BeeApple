@@ -14,7 +14,7 @@ var Menu={
 		instruction.anchor.set(0.5,0);	
 		var score1;
 		var len = instruction.length;
-		//VK.api("storage.get",{ "key": "top1","global": 1},function(data){score1=data.response;VK.api("storage.get",{ "key": "name1","global": 1},function(data){instruction.text=String(instruction.text+"\nЛидер: "+data.response+" "+score1);});});
+		VK.api("storage.get",{ "key": "top1","global": 1},function(data){score1=data.response;VK.api("storage.get",{ "key": "name1","global": 1},function(data){instruction.text=String(instruction.text+"\nЛидер: "+data.response+" "+score1);});});
 		instruction.addColor(0x4282D3,len)
 		game.input.onDown.add(this.startGame,this);	
 	},
