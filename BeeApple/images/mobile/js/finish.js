@@ -39,9 +39,9 @@ var Finish ={
 	},
 	whatSl: function(){
 		var ret="очко";
-		if(score==0 || score>=5){
+		if(Math.abs(score)==0 || Math.abs(score)>=5){
 				ret=" очков";
-			}else if(score>1 && score<5){
+		}else if(Math.abs(score)>1 && Math.abs(score)<5){
 				ret=" очка";
 		}
 		return String(' '+ret);
