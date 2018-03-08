@@ -5,7 +5,7 @@ var Menu={
 	create: function(){
 	var graphics=game.add.graphics(0,0);
 	graphics.lineStyle(2,0x086CA2,0.3);
-	graphics.drawRect(2,2,game.world.width-10,game.world.height-10);
+	graphics.drawRect(1,1,game.world.width-3,game.world.height-3);
 	window.graphics=graphics;
 	    game.stage.backgroundColor='#FFFFFF';
 		instruction = game.add.text(game.world.width/2,180,
@@ -15,7 +15,7 @@ var Menu={
 		var score1;
 		var len = instruction.length;
 		//VK.api("storage.get",{ "key": "top1","global": 1},function(data){score1=data.response;VK.api("storage.get",{ "key": "name1","global": 1},function(data){instruction.text=String(instruction.text+"\nЛидер: "+data.response+" "+score1);});});
-		instruction.addColor(0x4282D3,len)
+		instruction.addColor("#4282D3",len)
 		game.input.onDown.add(this.startGame,this);	
 	},
 	startGame: function(){

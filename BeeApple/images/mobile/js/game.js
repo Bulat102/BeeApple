@@ -20,14 +20,14 @@ var Game ={
 		score=0;
 		words=['валовОй','вАловый','ветеринАрия','ветеринарИя','баловАть','бАловать','бАрмен','бармЕн','бОчковое','бочкОвое','газопровОд','газопрОвод','договОр','дОговор','жалюзИ','жАлюзи','завИдно','зАвидно','каталОг','катАлог','красИвее','красивЕе','мАркетинг','маркЕтинг','мастерскИ','мАстерски','обеспЕчение','обеспечЕние','облегчИть','облЕгчить','откУпорить','откупОрить','позвонИшь','позвОнишь','тОрты','тортЫ','тУфля','туфлЯ','фенОмен','феномЕн','чЕрпать','черпАть','тОтчас','тотчАс','танцОвщица','танцовщИца'];
 		eventDispatcher = new Phaser.Signal();
-		instruction=game.add.text(game.world.width/2,150,'Выберите верное',{font:"bold 32px Arial",fill:'#000000', align:'center'});
+		instruction=game.add.text(game.world.width/2,game.world.height/2-130*koefx,'Выберите верное',{font:"bold "+String(Math.round(32*koefx))+"px Arial",fill:'#000000', align:'center'});
 		instruction.anchor.set(0.5,0);
-		scoreText=game.add.text(game.world.width/2,350,'0',{font:"bold 150px Arial",fill:'#4282D3', align:'center'});
+		scoreText=game.add.text(game.world.width/2,game.world.height*2.5/4,'0',{font:"bold "+String(Math.round(150*koefx))+"px Arial",fill:'#4282D3', align:'center'});
 		scoreText.anchor.set(0.5,0);
 		scoreText.alpha=0.3;
-		scoreText.setShadow(7,10,'rgba(0,0,0,0.5)',10);
-		button1=new Button(game.world.width/2-236/2-30,game.world.height/2);
-		button2=new Button(game.world.width/2+236/2+30,game.world.height/2);
+		scoreText.setShadow(7*koefx,10*koefx,'rgba(0,0,0,0.5)',10*koefx);
+		button1=new Button(game.world.width/2-150*koefx*1.5,game.world.height/2);
+		button2=new Button(game.world.width/2+150*koefx*1.5,game.world.height/2);
 		buty=game.world.height/2;
 		this.makeQuestion();
 		this.makeTimer();
@@ -71,11 +71,11 @@ var Game ={
 		graphics.clear();
 		graphics.lineStyle(0);
 		graphics.beginFill(0xA60000,0.35);
-		graphics.drawRect(0,game.world.height-30,game.world.width,30);
+		graphics.drawRect(0,game.world.height-50*koefx,game.world.width,30*koefx);
 		graphics.endFill();
 		graphics.lineStyle(0);
 		graphics.beginFill(0x00FF00,0.37);
-		graphics.drawRect(0,game.world.height-30,game.world.width*(time/15),30);
+		graphics.drawRect(0,game.world.height-50*koefx,game.world.width*(time/15),30*koefx);
 		graphics.endFill();
 	}
 }

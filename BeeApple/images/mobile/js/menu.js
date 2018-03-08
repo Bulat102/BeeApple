@@ -3,14 +3,10 @@ var Menu={
 	preload: function(){
 	},
 	create: function(){
-	var graphics=game.add.graphics(0,0);
-	graphics.lineStyle(2,0x086CA2,0.3);
-	graphics.drawRect(2,2,game.world.width-10,game.world.height-10);
-	window.graphics=graphics;
-	    game.stage.backgroundColor='#FFFFFF';
-		instruction = game.add.text(game.world.width/2,180,
+		game.stage.backgroundColor='#FFFFFF';
+		instruction = game.add.text(game.world.width/2,180*koefx,
 			"Выбирайте верные ударения в словах,\nпока не остановится таймер\n\n Кликните, чтобы начать\n",
-			{font:"bold 28px Arial",fill:'#000000', align:'center'});
+			{font:"bold "+String(Math.round(28*koefx))+"px Arial",fill:'#000000', align:'center'});
 		instruction.anchor.set(0.5,0);	
 		var score1;
 		var len = instruction.length;

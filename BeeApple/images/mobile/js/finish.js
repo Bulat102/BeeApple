@@ -7,19 +7,19 @@ var code;
 var Finish ={
 	preload : function(){},
 	create: function(){
-		var retryBut = game.add.text(220,340,"  зАново  ",{font:"bold 24px Arial",fill:'#000000', align:'center'});
-		var postBut = game.add.text(410,340,"  опубликовАть  ",{font:"bold 24px Arial",fill:'#000000', align:'center'});
+		var retryBut = game.add.text(220*koefx,340*koefx,"  зАново  ",{font:"bold "+String(Math.round(24*koefx))+"px Arial",fill:'#000000', align:'center'});
+		var postBut = game.add.text(410*koefx,340*koefx,"  опубликовАть  ",{font:"bold "+String(Math.round(24*koefx))+"px Arial",fill:'#000000', align:'center'});
 		graphics=game.add.graphics(0,0);
 		graphics.lineStyle(0);
 		graphics.beginFill(0x4869D6,0.5);
-		graphics.drawRect(retryBut.x,retryBut.y-5,retryBut.width,retryBut.height+10);
-		graphics.drawRect(postBut.x,postBut.y-5,postBut.width,postBut.height+10);
+		graphics.drawRect(retryBut.x,retryBut.y-5*koefx,retryBut.width,retryBut.height+10*koefx);
+		graphics.drawRect(postBut.x,postBut.y-5*koefx,postBut.width,postBut.height+10*koefx);
 		graphics.endFill();
-		instruction = game.add.text(game.world.width/2,270,
+		instruction = game.add.text(game.world.width/2,270*koefx,
 			"Вы заработали\n "+score+this.whatSl(),
-			{font:"bold 28px Arial",fill:'#000000', align:'center'});
+			{font:"bold "+String(Math.round(28*koefx))+"px Arial",fill:'#000000', align:'center'});
 		instruction.anchor.set(0.5,0.5);	
-		scoresText = game.add.text(5,5,"",{font:"italic 23px Arial",fill:'#1c3956'});
+		scoresText = game.add.text(5*koefx,retryBut.y+5,"",{font:"italic "+String(Math.round(22*koefx))+"px Arial",fill:'#1c3956'});
 		postBut.inputEnabled=true;
 		retryBut.inputEnabled=true;
 		postBut.events.onInputDown.add(this.wallPost,this);
@@ -56,8 +56,8 @@ var Finish ={
 			names.splice(n,0,name);
 			scores.splice(n,0,score);
 			scoresText.text="Рекорды:\n1. "+names[0]+" "+scores[0]+"\n2. "+names[1]+" "+scores[1]+"\n3. "+names[2]+" "+scores[2];
-			scoresText.text=scoresText.text+"\n\n Результат "+score+" попал в топ)";
 			code =String('return[API.storage.set({"key":"top1","value": \"'+scores[0]+'\","global":1}),API.storage.set({"key":"top2","value": \"'+scores[1]+'\","global":1}),API.storage.set({"key":"top3","value":\"'+scores[2]+'\","global":1}),API.storage.set({"key":"name1","value":\"'+names[0]+'\","global":1}),API.storage.set({"key":"name2","value":\"'+names[1]+'\","global":1}),API.storage.set({"key":"name3","value": \"'+names[2]+'\","global":1})];');
+			scoresText.text=scoresText.text+"\n\n Результат "+score+" попал в топ)";
 			//VK.api("execute",{"code":code});
 		}else{
 			scoresText.text="Рекорды:\n1. "+names[0]+" "+scores[0]+"\n2. "+names[1]+" "+scores[1]+"\n3. "+names[2]+" "+scores[2];
