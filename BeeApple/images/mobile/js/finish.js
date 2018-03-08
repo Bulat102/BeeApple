@@ -35,7 +35,8 @@ var Finish ={
 	},
 	update: function(){},
 	wallPost: function(){
-		VK.api("wall.post", {"message": String("В игре Udareniya я заработал "+score+this.whatSl()+"             Ссылка: vk.com/app6393619"), "attachments": "photo-160039023_456239019"});
+		VK.callMethod("showRequestBox",String("В игре Udareniya я заработал "+score+this.whatSl()),["photo-160039023_456239019","m.vk.com/app6393619_-160039023?act=app_r"]);
+		//VK.api("wall.post", {"message": String("В игре Udareniya я заработал "+score+this.whatSl()+"             Ссылка: vk.com/app6393619"), "attachments": "photo-160039023_456239019"});
 	},
 	whatSl: function(){
 		var ret="очко";
