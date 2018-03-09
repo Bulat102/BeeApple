@@ -12,6 +12,7 @@ var scoreText;
 var graphics;
 var Game ={
 	preload : function(){
+		game.load.spritesheet('button','images/button2.png',236,89);
 	},
 	create: function(){
 		graphics = game.add.graphics(0,0);
