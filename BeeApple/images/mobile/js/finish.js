@@ -32,10 +32,10 @@ var Finish ={
 			names=[data.response.scores[3].value,data.response.scores[4].value,data.response.scores[5].value];
 			scor();
 		});
+		VK.callMethod("showSettingsBox", 8192);
 	},
 	update: function(){},
 	wallPost: function(){
-		//VK.callMethod("showSettingsBox", 8192);
 		//VK.callMethod("showShareBox",String("В игре Udareniya я заработал "+score+this.whatSl()),["photo-160039023_456239019","m.vk.com/app6393619_-160039023?act=app_r"],"wall");
 		VK.api("wall.post", {"message": String("В игре Udareniya я заработал "+score+this.whatSl()), "attachments": "photo-160039023_456239019,m.vk.com/app6393619_-160039023?act=app_r"});
 	},
