@@ -1,7 +1,7 @@
 var game;
 var koefx;//коэффициент экрана
 var koefy;
-VK.init(function() {}, function() {}, '5.73');
+VK.init(function() {}, function() {}, '5.60');
 window.onload=function(){
     koefx=window.innerWidth/900;
     game = new Phaser.Game(window.innerWidth-50*koefx, window.innerHeight-100*koefx, Phaser.AUTO, "ph_game");
