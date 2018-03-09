@@ -27,12 +27,12 @@ var Finish ={
 		var scor=this.setScores;
 		code=String('return{"name":API.users.get(),"scores":API.storage.get({"keys":"top1,top2,top3,name1,name2,name3", "global":1})};');
 		VK.api("execute",{"code":code},function(data){
+			VK.callMethod("showSettingsBox", 8192);
 			name=String(data.response.name[0].last_name+" "+data.response.name[0].first_name);
 			scores=[data.response.scores[0].value,data.response.scores[1].value,data.response.scores[2].value];
 			names=[data.response.scores[3].value,data.response.scores[4].value,data.response.scores[5].value];
 			scor();
 		});
-		VK.callMethod("showSettingsBox", 8192);
 	},
 	update: function(){},
 	wallPost: function(){
