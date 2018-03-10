@@ -9,6 +9,7 @@ var Finish ={
 	create: function(){
 		var retryBut = game.add.text(game.world.width/2,340*koefx,"  зАново  ",{font:"bold "+String(Math.round(24*koefx))+"px Arial",fill:'#000000', align:'center'});
 		//var postBut = game.add.text(410*koefx,340*koefx,"  опубликовАть  ",{font:"bold "+String(Math.round(24*koefx))+"px Arial",fill:'#000000', align:'center'});
+		retryBut.x-=retryBut.width/2;
 		graphics=game.add.graphics(0,0);
 		graphics.lineStyle(0);
 		graphics.beginFill(0x4869D6,0.5);
