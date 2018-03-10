@@ -50,7 +50,6 @@ var Finish ={
 		for(var i=scores.length-1;i>=0;i--){
 			if(Number(scores[i])<=Number(score)){
 				n=i;
-				console.log(String(Number(scores[i]))+"  "+String(Number(score)));
 			}
 		}
 		if(n>-1){
