@@ -50,7 +50,7 @@ var Finish ={
 	},
 	setScores: function(){
 		for(var i=scores.length-1;i>=0;i--){
-			if(Number(scores[i])<=score){
+			if(Number(scores[i])<=Number(score)){
 				n=i;
 			}
 		}
