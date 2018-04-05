@@ -8,7 +8,7 @@ var Finish ={
 	preload : function(){},
 	create: function(){
 		var retryBut = game.add.text(game.world.width/2,340*koefx,"  зАново  ",{font:"bold "+String(Math.round(24*koefx))+"px Arial",fill:'#000000', align:'center'});
-		var postBut = game.add.text(410*koefx,340*koefx,"  опубликовАть  ",{font:"bold "+String(Math.round(24*koefx))+"px Arial",fill:'#000000', align:'center'});
+		var postBut = game.add.text(game.world.width/2 + retryBut.width + 20*koefx,340*koefx,"  опубликовАть  ",{font:"bold "+String(Math.round(24*koefx))+"px Arial",fill:'#000000', align:'center'});
 		retryBut.x-=retryBut.width/2;
 		graphics=game.add.graphics(0,0);
 		graphics.lineStyle(0);
@@ -36,7 +36,7 @@ var Finish ={
 	},
 	update: function(){},
 	wallPost: function(){
-		VK.callMethod("shareBox", "vk.com/app6393619","photo-160039023_456239019", "Udareniya");
+		VK.callMethod("shareBox", "https://vk.com/app6393619_-160039023","https://vk.com/prost_chtoto?z=photo-160039023_456239019%2Falbum-160039023_252592624", "Udareniya");
 	},
 	whatSl: function(){
 		var ret="очко";
