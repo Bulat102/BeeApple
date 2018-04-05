@@ -36,14 +36,14 @@ var Finish ={
 	},
 	update: function(){},
 	wallPost: function(){
-		VK.callMethod("shareBox", "https://vk.com/app6393619_-160039023","https://pp.userapi.com/c841625/v841625319/74025/zSS3oqFs7ws.jpg", "игра на Udareniya");
+		VK.callMethod("shareBox", "https://vk.com/prost_chtoto","https://pp.userapi.com/c841625/v841625319/74025/zSS3oqFs7ws.jpg", "В этой группе я набрал"+score+this.whatSl()+" в игре Udareniya.");
 	},
 	whatSl: function(){
 		var ret="очко";
 		if(Math.abs(score)==0 || Math.abs(score)>=5){
-				ret=" очков";
+				ret="очков";
 		}else if(Math.abs(score)>1 && Math.abs(score)<5){
-				ret=" очка";
+				ret="очка";
 		}
 		return String(' '+ret);
 	},
