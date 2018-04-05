@@ -36,7 +36,7 @@ var Finish ={
 	},
 	update: function(){},
 	wallPost: function(){
-		VK.callMethod("shareBox", "https://vk.com/prost_chtoto","https://pp.userapi.com/c841625/v841625319/74025/zSS3oqFs7ws.jpg", "В этой группе я набрал "+score+this.whatSl()+" в игре Udareniya.");
+		VK.callMethod("shareBox", "https://vk.com/prost_chtoto","https://pp.userapi.com/c841625/v841625319/74025/zSS3oqFs7ws.jpg", "Мной набрано "+score+this.whatSl()+" в игре Udareniya.");
 	},
 	whatSl: function(){
 		var ret="очко";
