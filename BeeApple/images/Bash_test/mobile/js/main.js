@@ -1,5 +1,5 @@
 var game;
-//VK.init(function() {}, function() {}, '5.73');
+VK.init(function() {}, function() {}, '5.60');
 window.onload=function(){else {
     game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, "ph_game");
 	game.state.add("Menu",Menu);
