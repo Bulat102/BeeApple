@@ -8,22 +8,22 @@ var Finish ={
 	preload : function(){},
 	create: function(){
 		var retryBut = game.add.text(game.world.width/2,340*koefx,"  зАново  ",{font:"bold "+String(Math.round(24*koefx))+"px Arial",fill:'#000000', align:'center'});
-		//var postBut = game.add.text(410*koefx,340*koefx,"  опубликовАть  ",{font:"bold "+String(Math.round(24*koefx))+"px Arial",fill:'#000000', align:'center'});
+		var postBut = game.add.text(410*koefx,340*koefx,"  опубликовАть  ",{font:"bold "+String(Math.round(24*koefx))+"px Arial",fill:'#000000', align:'center'});
 		retryBut.x-=retryBut.width/2;
 		graphics=game.add.graphics(0,0);
 		graphics.lineStyle(0);
 		graphics.beginFill(0x4869D6,0.5);
 		graphics.drawRect(retryBut.x,retryBut.y-5*koefx,retryBut.width,retryBut.height+10*koefx);
-		//graphics.drawRect(postBut.x,postBut.y-5*koefx,postBut.width,postBut.height+10*koefx);
+		graphics.drawRect(postBut.x,postBut.y-5*koefx,postBut.width,postBut.height+10*koefx);
 		graphics.endFill();
 		instruction = game.add.text(game.world.width/2,270*koefx,
 			"Вы заработали\n "+score+this.whatSl(),
 			{font:"bold "+String(Math.round(28*koefx))+"px Arial",fill:'#000000', align:'center'});
 		instruction.anchor.set(0.5,0.5);	
 		scoresText = game.add.text(5*koefx,retryBut.y+5,"",{font:"italic "+String(Math.round(22*koefx))+"px Arial",fill:'#1c3956'});
-		//postBut.inputEnabled=true;
+		postBut.inputEnabled=true;
 		retryBut.inputEnabled=true;
-		//postBut.events.onInputDown.add(this.wallPost,this);
+		postBut.events.onInputDown.add(this.wallPost,this);
 		retryBut.events.onInputDown.add(function(){game.state.start("Game");},this);
 		var scor=this.setScores;
 		code=String('return{"name":API.users.get(),"scores":API.storage.get({"keys":"top1,top2,top3,name1,name2,name3", "global":1})};');
@@ -36,8 +36,7 @@ var Finish ={
 	},
 	update: function(){},
 	wallPost: function(){
-		//VK.callMethod("showShareBox",String("В игре Udareniya я заработал "+score+this.whatSl()),["photo-160039023_456239019","m.vk.com/app6393619_-160039023?act=app_r"],"wall");
-		//VK.api("wall.post", {"message": String("В игре Udareniya я заработал "+score+this.whatSl()), "attachments": "photo-160039023_456239019,m.vk.com/app6393619_-160039023?act=app_r"},function(data){console.log(JSON.stringify(data))});
+		VK.callMethod("shareBox", "vk.com/app6393619","photo-160039023_456239019", "Udareniya");
 	},
 	whatSl: function(){
 		var ret="очко";
