@@ -36,7 +36,7 @@ var Finish ={
 	},
 	update: function(){},
 	wallPost: function(){
-		VK.callMethod("shareBox", "https://vk.com/app6393619_-160039023","photo-160039023_456239019", "игра на Udareniya");
+		VK.callMethod("shareBox", "https://vk.com/app6393619_-160039023","https://pp.userapi.com/c841625/v841625319/74025/zSS3oqFs7ws.jpg", "игра на Udareniya");
 	},
 	whatSl: function(){
 		var ret="очко";
