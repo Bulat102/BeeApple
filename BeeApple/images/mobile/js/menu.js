@@ -1,6 +1,7 @@
 var instruction;
 var Menu={
-	preload: function(){
+	preload : function(){
+		game.load.spritesheet('button','images/button2.png',236,89);
 	},
 	create: function(){
 		game.stage.backgroundColor='#FFFFFF';
