@@ -36,7 +36,7 @@ var Finish ={
 	},
 	update: function(){},
 	wallPost: function(){
-		VK.callMethod("shareBox", "https://vk.com/prost_chtoto","https://pp.userapi.com/c841625/v841625319/74025/zSS3oqFs7ws.jpg", "Мной набрано "+score+this.whatSl()+" в игре Udareniya.");
+		VK.callMethod("shareBox", "https://vk.com/udareniya","https://pp.userapi.com/c841625/v841625319/74025/zSS3oqFs7ws.jpg", "Мной набрано "+score+this.whatSl()+" в игре Udareniya.");
 	},
 	whatSl: function(){
 		var ret="очко";
@@ -48,9 +48,24 @@ var Finish ={
 		return String(' '+ret);
 	},
 	setScores: function(){
-		for(var i=scores.length-1;i>=0;i--){
-			if(Number(scores[i])<=Number(score)){
-				n=i;
+		var addBool=true;
+		for(var i=scores.length-2;i>=0;i--){
+			if(String(name)==String(names[i])){
+				if(Number(scores[i])>=Number(score)){
+					addBool=false;
+					break;
+				}else{
+					names.splice(i,1);
+					scores.splice(i,1);
+					break;
+				}
+			}
+		}
+		if(addBool){
+			for(i=scores.length-1;i>=0;i--){
+				if(Number(scores[i])<=Number(score)){
+					n=i;
+				}
 			}
 		}
 		if(n>-1){
