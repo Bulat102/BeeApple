@@ -50,13 +50,13 @@ var Finish ={
 		var addBool=true;
 		for(var i=scores.length-2;i>=0;i--){
 			if(String(name)==String(names[i])){
-					console.log(names);
+					console.log(String(i));
 				if(Number(scores[i])>=Number(score)){
 					addBool=false;
 					break;
 				}else{
-					names.splice(i-1,1);
-					scores.splice(i-1,1);
+					names.splice(i,1);
+					scores.splice(i,1);
 					break;
 				}
 			}
