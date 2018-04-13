@@ -55,8 +55,8 @@ var Finish ={
 					addBool=false;
 					break;
 				}else{
-					names.splice(i,1);
-					scores.splice(i,1);
+					names.splice(i-1,1);
+					scores.splice(i-1,1);
 					break;
 				}
 			}
