@@ -47,9 +47,24 @@ var Finish ={
 		return String(' '+ret);
 	},
 	setScores: function(){
-		for(var i=scores.length-1;i>=0;i--){
-			if(Number(scores[i])<=Number(score)){
-				n=i;
+		var addBool=true;
+		for(var i=scores.length-2;i>=0;i--){
+			if(String(name)==String(names[i])){
+				if(Number(scores[i])>=Number(score)){
+					addBool=false;
+					break;
+				}else{
+					names.splice(i,1);
+					scores.splice(i,1);
+					break;
+				}
+			}
+		}
+		if(addBool){
+			for(i=scores.length-1;i>=0;i--){
+				if(Number(scores[i])<=Number(score)){
+					n=i;
+				}
 			}
 		}
 		if(n>-1){
