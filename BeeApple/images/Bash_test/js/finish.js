@@ -35,7 +35,7 @@ var Finish ={
 	},
 	update: function(){},
 	wallPost: function(){
-		VK.api("wall.post", {"message": String("Мной набрано "+score+this.whatSl()+" в игре Udareniya. Cсылка на группу: https://vk.com/udareniya"), "attachments": "photo-160039023_456239019"});
+		VK.api("wall.post", {"message": String("Мной набрано "+score+this.whatSl()+" в игре Udareniya. Cсылка на группу игры: https://vk.com/udareniya"), "attachments": "photo-160039023_456239019"});
 	},
 	whatSl: function(){
 		var ret="очко";
