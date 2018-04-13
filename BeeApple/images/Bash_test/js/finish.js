@@ -67,7 +67,7 @@ var Finish ={
 				}
 			}
 		}
-		if(n>-1){
+		if(n==-1){
 			names.splice(n,0,name);
 			scores.splice(n,0,score);
 			names=['','',''];
