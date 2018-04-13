@@ -56,6 +56,7 @@ var Finish ={
 				}else{
 					names.splice(i,1);
 					scores.splice(i,1);
+					console.log(names);
 					break;
 				}
 			}
