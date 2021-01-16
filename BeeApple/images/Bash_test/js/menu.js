@@ -10,7 +10,7 @@ var Menu={
 		instruction.anchor.set(0.5,0);	
 		var score1;
 		var len = instruction.length;
-		game.input.onDown.add(Menu.startGame,Menu);});});
+		game.input.onDown.add(Menu.startGame,Menu);
 		instruction.addColor(0x4282D3,len);
 	},
 	startGame: function(){
